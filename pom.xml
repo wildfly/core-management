@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2013 Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.wildfly.core.management</groupId>
+    <artifactId>core-management-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0.Beta1-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>11</version>
+    </parent>
+
+    <properties>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <version.org.jboss.narayana.arjunacore>5.0.0.M3</version.org.jboss.narayana.arjunacore>
+        <version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>1.0.1.Final</version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec>
+        <version.org.jboss.logging.jboss-logging>3.1.2.GA</version.org.jboss.logging.jboss-logging>
+        <version.org.jboss.logging.jboss-logging-processor>1.2.0.Beta1</version.org.jboss.logging.jboss-logging-processor>
+        <version.org.jboss.jboss-dmr>1.2.0.Beta2</version.org.jboss.jboss-dmr>
+        <version.org.jboss.msc.jboss-msc>2.0.0.Beta1-SNAPSHOT</version.org.jboss.msc.jboss-msc>
+        <version.org.jboss.jdeparser.jdeparser>2.0.0.Alpha3</version.org.jboss.jdeparser.jdeparser>
+        <version.org.kohsuke.metainf-services.metainf-services>1.5</version.org.kohsuke.metainf-services.metainf-services>
+        <version.xom.xom>1.2.5</version.xom.xom>
+    </properties>
+
+    <modules>
+        <module>api</module>
+        <module>annotations</module>
+        <module>reflection</module>
+        <module>tool</module>
+        <module>examples/xts</module>
+        <module>examples/threads</module>
+        <module>example</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.core.management</groupId>
+                <artifactId>core-management-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core.management</groupId>
+                <artifactId>core-management-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core.management</groupId>
+                <artifactId>core-reflection</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core.management</groupId>
+                <artifactId>core-management-processor</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-processor</artifactId>
+                <version>${version.org.jboss.logging.jboss-logging-processor}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-annotations</artifactId>
+                <version>${version.org.jboss.logging.jboss-logging-processor}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${version.org.jboss.logging.jboss-logging}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.msc</groupId>
+                <artifactId>jboss-msc</artifactId>
+                <version>${version.org.jboss.msc.jboss-msc}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.narayana.arjunacore</groupId>
+                <artifactId>arjunacore</artifactId>
+                <version>${version.org.jboss.narayana.arjunacore}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec.javax.transaction</groupId>
+                <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+                <version>${version.org.jboss.spec.javax.transaction.jboss-transaction-api_1.1_spec}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-dmr</artifactId>
+                <version>${version.org.jboss.jboss-dmr}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.kohsuke.metainf-services</groupId>
+                <artifactId>metainf-services</artifactId>
+                <version>${version.org.kohsuke.metainf-services.metainf-services}</version>
+            </dependency>
+            <dependency>
+                <groupId>xom</groupId>
+                <artifactId>xom</artifactId>
+                <version>${version.xom.xom}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xerces</groupId>
+                        <artifactId>xercesImpl</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xalan</groupId>
+                        <artifactId>xalan</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.jdeparser</groupId>
+                <artifactId>jdeparser</artifactId>
+                <version>${version.org.jboss.jdeparser.jdeparser}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
